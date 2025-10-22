@@ -1,0 +1,6 @@
+-toast can not save to database.
+-UserService method findPermissionByUsername Error.
+-MessageEndpoint Error: wrong argument.
+-Role-> just one role cans save.
+-JsonProperty-> not show.
+-Validations->check.
