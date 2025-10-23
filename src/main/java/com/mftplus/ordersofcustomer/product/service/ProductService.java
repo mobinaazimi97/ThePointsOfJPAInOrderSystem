@@ -1,6 +1,6 @@
 package com.mftplus.ordersofcustomer.product.service;
 
-import com.mftplus.ordersofcustomer.product.Product;
+import com.mftplus.ordersofcustomer.product.entity.Product;
 import com.mftplus.ordersofcustomer.serviceAbstract.Service;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.persistence.EntityManager;
@@ -13,7 +13,7 @@ import java.util.List;
 @RequestScoped
 public class ProductService implements Service<Product, Long> {
 
-    @PersistenceContext(unitName = "mft")
+    @PersistenceContext(unitName="mft")
     private EntityManager entityManager;
 
     @Transactional
@@ -57,13 +57,6 @@ public class ProductService implements Service<Product, Long> {
         return query.getResultList();
     }
 
-//    @Transactional
-//    public List<Product> findByPrice(Float price) {
-//        Query query = entityManager.createQuery("select p from productEntity p where p.price = : price", Product.class);
-//        query.setParameter("price", price);
-//        return query.getResultList();
-//    }
-
     @Transactional
     public List<Product> findByCode(Long code) {
         Query query = entityManager.createQuery("select p from productEntity p where p.code = : code", Product.class);
@@ -73,7 +66,6 @@ public class ProductService implements Service<Product, Long> {
 
     @Transactional
     public List<Product> findByGroup(String name) {
-        //todo
         Query query = entityManager.createQuery("select p from productEntity p where p.productGroup.name=:name", Product.class);
         query.setParameter("name", name);
         return query.getResultList();

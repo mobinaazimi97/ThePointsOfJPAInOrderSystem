@@ -18,7 +18,7 @@ import java.util.List;
 @Slf4j
 public class OrderService implements Service<Order, Long> {
 
-    @PersistenceContext(unitName = "mft")
+    @PersistenceContext(unitName="mft")
     private EntityManager entityManager;
 
     @Transactional

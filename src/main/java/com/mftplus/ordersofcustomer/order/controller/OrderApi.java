@@ -26,7 +26,7 @@ public class OrderApi {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("{id}")
+    @Path("/{id}")
     @Loggable
     public Object getOrderById(@PathParam("id") Long id) {
         return orderService.findById(id);
@@ -107,7 +107,7 @@ public class OrderApi {
     }
 
     @DELETE
-    @Path("{id}")
+    @Path("/{id}")
     @Loggable
     public Object deleteOrder(@PathParam("id") Long id) {
         orderService.remove(id);

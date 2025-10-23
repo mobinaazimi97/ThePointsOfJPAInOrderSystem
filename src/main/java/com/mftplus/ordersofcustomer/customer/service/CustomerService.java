@@ -16,7 +16,7 @@ import java.util.List;
 @RequestScoped
 @Slf4j
 public class CustomerService implements Service<Customer, Long> {
-    @PersistenceContext(unitName = "mft")
+    @PersistenceContext(unitName="mft")
     private EntityManager entityManager;
 
     @Transactional

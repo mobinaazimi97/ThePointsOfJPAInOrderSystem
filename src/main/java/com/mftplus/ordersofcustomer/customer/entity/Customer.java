@@ -1,5 +1,6 @@
 package com.mftplus.ordersofcustomer.customer.entity;
 
+import com.mftplus.ordersofcustomer.inheritanceModel.Base;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,7 +15,7 @@ import lombok.experimental.SuperBuilder;
 @ToString
 @Entity(name = "customerEntity")
 @Table(name = "customers")
-public class Customer {
+public class Customer extends Base {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

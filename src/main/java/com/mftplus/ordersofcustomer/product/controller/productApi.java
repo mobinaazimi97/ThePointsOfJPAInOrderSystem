@@ -1,7 +1,7 @@
 package com.mftplus.ordersofcustomer.product.controller;
 
 
-import com.mftplus.ordersofcustomer.product.Product;
+import com.mftplus.ordersofcustomer.product.entity.Product;
 import com.mftplus.ordersofcustomer.product.service.ProductService;
 import jakarta.inject.Inject;
 import jakarta.validation.Valid;
@@ -23,7 +23,7 @@ public class productApi {
     }
 
     @GET
-    @Path("{id}")
+    @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Object getProductById(@PathParam("id") Long id) {
         log.info("getProduct By Id +");
@@ -66,7 +66,7 @@ public class productApi {
     }
 
     @DELETE
-    @Path("{id}")
+    @Path("/{id}")
     public Object deleteProduct(@PathParam("id") Long id) {
         log.info("deleteProduct +");
         Product product = productService.findById(id);

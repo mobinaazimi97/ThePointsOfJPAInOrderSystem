@@ -27,7 +27,7 @@ public class CustomerController {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("{id}")
+    @Path("/{id}")
     @Loggable
     public Object getCustomerById(@PathParam("id") Long id) {
         return customerService.findById(id);
@@ -52,7 +52,7 @@ public class CustomerController {
     }
 
     @DELETE
-    @Path("{id}")
+    @Path("/{id}")
     @Loggable
     public Object deleteCustomer(@PathParam("id") Long id) {
         customerService.remove(id);
