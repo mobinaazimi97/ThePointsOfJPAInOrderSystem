@@ -60,4 +60,20 @@ public class OrderItemService implements Service<OrderItem, Long> {
         Query query = entityManager.createQuery("SELECT o FROM OrderItemEntity o", OrderItem.class);
         return query.getResultList();
     }
+
+    @Transactional
+    @Loggable
+    public OrderItem findByProductId(Long id) {
+        Query query = entityManager.createQuery("SELECT o FROM OrderItemEntity o WHERE o.product.id = :id", OrderItem.class);
+        query.setParameter("id", id);
+        return (OrderItem) query.getSingleResult();
+    }
+    @Transactional
+    @Loggable
+    public List<OrderItem> findByProductName(String name) {
+        Query query = entityManager.createQuery("SELECT o FROM OrderItemEntity o WHERE o.product.name = :name", OrderItem.class);
+        query.setParameter("name", name);
+        return query.getResultList();
+    }
+
 }

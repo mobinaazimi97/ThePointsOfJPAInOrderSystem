@@ -51,7 +51,7 @@ public class Order extends Base {
     @Column(name = "shipping_cost") //nullable = false
     private double shippingCost;
 
-    @OneToMany(mappedBy = "order", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "order", cascade = CascadeType.PERSIST)
     private List<OrderItem> orderItems;
 
     public void addItem(OrderItem orderItem) {

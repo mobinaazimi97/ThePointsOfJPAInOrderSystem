@@ -30,7 +30,6 @@ public class OrderItemApi {
     }
 
 
-
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
@@ -56,4 +55,21 @@ public class OrderItemApi {
         orderItemService.remove(id);
         return id;
     }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/proId/{proId}")
+    @Loggable
+    public Object getOrderItemByProductId(@PathParam("proId") Long id) {
+        return orderItemService.findByProductId(id);
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/proName/{proName}")
+    @Loggable
+    public Object getOrderItemByProductName(@PathParam("proName") String name) {
+        return orderItemService.findByProductName(name);
+    }
+
 }

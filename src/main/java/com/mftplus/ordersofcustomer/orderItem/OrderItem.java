@@ -3,6 +3,7 @@ package com.mftplus.ordersofcustomer.orderItem;
 
 import com.mftplus.ordersofcustomer.inheritanceModel.Base;
 import com.mftplus.ordersofcustomer.order.entity.Order;
+import com.mftplus.ordersofcustomer.product.Product;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,6 +28,10 @@ public class OrderItem extends Base {
     @ManyToOne
     @JoinColumn(name = "item_order_id")
     private Order order;
+
+    @ManyToOne
+    @JoinColumn(name = "item_product_id")
+    private Product product;
 
     @Transient
     private double amount;
