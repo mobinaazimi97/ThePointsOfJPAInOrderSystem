@@ -1,17 +1,17 @@
 package com.mftplus.ordersofcustomer.testApis;
 
 
-import com.mftplus.ordersofcustomer.customer.entity.Customer;
-import com.mftplus.ordersofcustomer.customer.service.CustomerService;
-import com.mftplus.ordersofcustomer.order.entity.Order;
-import com.mftplus.ordersofcustomer.order.entity.enums.OrderStatus;
-import com.mftplus.ordersofcustomer.order.service.OrderService;
-import com.mftplus.ordersofcustomer.orderItem.entity.OrderItem;
-import com.mftplus.ordersofcustomer.groupProperty.entity.GroupProperty;
-import com.mftplus.ordersofcustomer.product.entity.Product;
-import com.mftplus.ordersofcustomer.productGroup.entity.ProductGroup;
-import com.mftplus.ordersofcustomer.propertyValue.entity.ProductPropertyValue;
-import com.mftplus.ordersofcustomer.product.service.ProductService;
+import com.mftplus.ordersofcustomer.entity.Customer;
+import com.mftplus.ordersofcustomer.service.CustomerService;
+import com.mftplus.ordersofcustomer.entity.Order;
+import com.mftplus.ordersofcustomer.entity.enums.OrderStatus;
+import com.mftplus.ordersofcustomer.service.OrderService;
+import com.mftplus.ordersofcustomer.entity.OrderItem;
+import com.mftplus.ordersofcustomer.entity.GroupProperty;
+import com.mftplus.ordersofcustomer.entity.Product;
+import com.mftplus.ordersofcustomer.entity.ProductGroup;
+import com.mftplus.ordersofcustomer.entity.ProductPropertyValue;
+import com.mftplus.ordersofcustomer.service.ProductService;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.GET;

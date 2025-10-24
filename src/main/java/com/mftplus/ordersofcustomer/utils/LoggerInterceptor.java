@@ -12,7 +12,7 @@ import java.util.Arrays;
 @Slf4j
 public class LoggerInterceptor {
     @AroundInvoke
-    public Object intercept(InvocationContext context) throws Exception {
+    public Object intercept(InvocationContext context){
         try {
             log.info(
                     String.format("%s Started with parameters (%s)",
