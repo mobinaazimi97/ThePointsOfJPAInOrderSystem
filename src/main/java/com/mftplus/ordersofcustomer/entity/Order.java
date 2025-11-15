@@ -1,8 +1,8 @@
 package com.mftplus.ordersofcustomer.entity;
 
 
-import com.mftplus.ordersofcustomer.inheritanceModel.Base;
 import com.mftplus.ordersofcustomer.entity.enums.OrderStatus;
+import com.mftplus.ordersofcustomer.inheritanceModel.Base;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,6 +10,7 @@ import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -67,6 +68,18 @@ public class Order extends Base {
     @ToString.Include
     private List<OrderItem> orderItems;
 
+    @Column(name = "expiredCampDate")
+    private LocalDate expiredCampDate;
+
+    @Column(name = "createdAt")
+    private LocalDateTime createdAt;
+
+    @Column(name = "quantity")
+    private int quantity;
+
+    @Column(name = "price")
+    private Double price;
+
     public void addItem(OrderItem orderItem) {
         if (orderItems == null) orderItems = new ArrayList<>();
         orderItems.add(orderItem);
@@ -92,5 +105,10 @@ public class Order extends Base {
     public void setDateTime() {
         orderDateTime = LocalDateTime.now();
     }
+
+//    @PreUpdate
+//    public void setExpiredCampDate() {
+//        expiredCampDate = LocalDate.now();
+//    }
 
 }

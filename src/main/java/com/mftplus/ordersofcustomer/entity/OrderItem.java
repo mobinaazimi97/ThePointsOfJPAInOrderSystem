@@ -14,7 +14,7 @@ import lombok.experimental.SuperBuilder;
 @Setter
 @SuperBuilder
 
-@Entity(name = "OrderItemEntity")
+@Entity(name = "orderItemEntity")
 @Table(name = "order_item_tbl")
 @ToString(onlyExplicitlyIncluded = true)
 public class OrderItem extends Base {
