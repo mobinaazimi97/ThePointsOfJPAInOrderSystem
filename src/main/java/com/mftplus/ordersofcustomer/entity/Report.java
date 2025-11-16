@@ -20,7 +20,8 @@ import java.time.LocalDateTime;
 public class Report {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name = "repSeq", sequenceName = "report_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "repSeq")
     private Long id;
 
     @Column(nullable = false)
