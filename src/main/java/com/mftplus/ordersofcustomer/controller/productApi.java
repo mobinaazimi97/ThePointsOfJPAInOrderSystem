@@ -1,6 +1,7 @@
 package com.mftplus.ordersofcustomer.controller;
 
 
+import com.mftplus.ordersofcustomer.dto.ProductDTO;
 import com.mftplus.ordersofcustomer.entity.Product;
 import com.mftplus.ordersofcustomer.service.ProductService;
 import jakarta.inject.Inject;
@@ -38,6 +39,13 @@ public class productApi {
         return productService.findByName(name);
     }
 
+    @GET
+    @Path("/category/{category}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Object getProductByCategory(@PathParam("category") String category) {
+        log.info("getProductByCategory +");
+        return productService.findByCategory(category);
+    }
 
     @GET
     @Path("/code/{code}")
@@ -46,6 +54,18 @@ public class productApi {
         log.info("getProductByCode +");
         return productService.findByCode(code);
     }
+
+
+
+//    @GET
+//    @Path("/category/{category}")
+//    @Produces(MediaType.APPLICATION_JSON)
+//    public Object getProductByCategory(@PathParam("category") String category, ProductDTO productDTO) {
+//        log.info("getProductByCategory +");
+//        productDTO.setCategory(category);
+//        return productService.findByCategory(productDTO);
+//    }
+
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)

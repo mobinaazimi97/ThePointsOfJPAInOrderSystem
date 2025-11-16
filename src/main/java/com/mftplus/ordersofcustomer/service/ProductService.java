@@ -13,7 +13,7 @@ import java.util.List;
 @RequestScoped
 public class ProductService implements Service<Product, Long> {
 
-    @PersistenceContext(unitName="mft")
+    @PersistenceContext(unitName = "mft")
     private EntityManager entityManager;
 
     @Transactional
@@ -52,21 +52,41 @@ public class ProductService implements Service<Product, Long> {
 
     @Transactional
     public List<Product> findByName(String name) {
-        Query query = entityManager.createQuery("select p from productEntity p where p.name = : name", Product.class);
+        Query query = entityManager.createQuery("select p from productEntity p where p.name like:name", Product.class);
         query.setParameter("name", name);
+        return query.getResultList();
+    }
+
+//    @Transactional
+//    public List<ProductDTO> findByCategory(ProductDTO productDTO) {
+//        Product product = new Product();
+//        product.setCategory(productDTO.getCategory());
+//        entityManager.persist(product);
+//        entityManager.flush();
+//        TypedQuery<Product> query = entityManager.createQuery("select p from productEntity p where p.category like :category", Product.class);
+//        List category = query.setParameter("category", "%" + product.getCategory() + "%")
+//                .getResultList();
+//        productDTO.setCategory(String.valueOf(category.get(0)));
+//        return Collections.singletonList(productDTO);
+//    }
+
+    @Transactional
+    public List<Product> findByCategory(String category) {
+        Query query = entityManager.createQuery("select p from productEntity p where p.category like:category", Product.class);
+        query.setParameter("category", category);
         return query.getResultList();
     }
 
     @Transactional
     public List<Product> findByCode(Long code) {
-        Query query = entityManager.createQuery("select p from productEntity p where p.code = : code", Product.class);
+        Query query = entityManager.createQuery("select p from productEntity p where p.code like:code", Product.class);
         query.setParameter("code", code);
         return query.getResultList();
     }
 
     @Transactional
     public List<Product> findByGroup(String name) {
-        Query query = entityManager.createQuery("select p from productEntity p where p.productGroup.name=:name", Product.class);
+        Query query = entityManager.createQuery("select p from productEntity p where p.productGroup.name like:name", Product.class);
         query.setParameter("name", name);
         return query.getResultList();
     }

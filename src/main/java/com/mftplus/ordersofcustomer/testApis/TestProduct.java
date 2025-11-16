@@ -1,6 +1,7 @@
 package com.mftplus.ordersofcustomer.testApis;
 
 
+import com.mftplus.ordersofcustomer.dto.ProductDTO;
 import com.mftplus.ordersofcustomer.dto.ReportSummary;
 import com.mftplus.ordersofcustomer.entity.*;
 import com.mftplus.ordersofcustomer.entity.enums.OrderStatus;
@@ -12,6 +13,7 @@ import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
+import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import lombok.extern.slf4j.Slf4j;
@@ -49,6 +51,7 @@ public class TestProduct {
                 .price(20F)
                 .productGroup(productGroup)
                 .code("111")
+                .category("digital")
                 .build();
         productService.save(product);
         log.info(product.toString());
@@ -62,10 +65,11 @@ public class TestProduct {
         GroupProperty groupProperty2 = GroupProperty.builder().name("ram").productPropertyValue(productPropertyValue2).build();
         ProductGroup productGroup2 = ProductGroup.builder().groupProperty(groupProperty2).name("laptop").parent(parent2).childList(List.of(child2)).build();
         Product product2 = Product.builder()
-                .name("laptop")
+                .name("mobile")
                 .price(20F)
                 .productGroup(productGroup2)
                 .code("1111")
+                .category("")
                 .build();
         productService.save(product2);
         log.info(product2.toString());
@@ -101,6 +105,20 @@ public class TestProduct {
         customerService.save(customer);
         return customer.toString();
 
+    }
+
+    @GET
+    @Path("/category/{category}")
+    @Transactional(Transactional.TxType.REQUIRES_NEW)
+    public Object testCategory(@PathParam("category")String category) {
+        ProductDTO product = ProductDTO.builder()
+                .name("laptop")
+                .price(300F)
+                .code("111")
+                .category("digital")
+                .build();
+        log.info("category {}", product);
+        return productService.findByCategory(product);
     }
 
 

@@ -14,7 +14,7 @@ import java.util.List;
 @Path("/reports")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class ReportController {
+public class ReportApi {
 
     @Inject
     private ReportService reportService;
