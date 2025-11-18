@@ -94,15 +94,18 @@ public class TestProduct {
     @GET
     @Path("/category/{category}")
     @Transactional(Transactional.TxType.REQUIRES_NEW)
-    public Object testCategory(@PathParam("category")String category) {
-        ProductDTO product = ProductDTO.builder()
+    public Object testCategory(@PathParam("category") String category) {
+
+        Product product = Product.builder()
                 .name("laptop")
                 .price(300F)
                 .code("111")
                 .category("digital")
                 .build();
-        log.info("category {}", product);
-        return productService.findByCategory(product.toString());
+
+        productService.save(product);
+        log.info(product.toString());
+        return productService.findByCategory(category);
     }
 
 

@@ -6,6 +6,7 @@ import jakarta.enterprise.context.RequestScoped;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
+import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
 
 import java.util.List;
@@ -72,14 +73,18 @@ public class ProductService implements Service<Product, Long> {
 
     @Transactional
     public List<Product> findByCategory(String category) {
-        Query query = entityManager.createQuery("select p from productEntity p where p.category like:category", Product.class);
-        query.setParameter("category", category);
+        TypedQuery<Product> query = entityManager.createQuery(
+                "select p from productEntity p where p.category like :category",
+                Product.class
+        );
+        query.setParameter("category", "%" + category + "%");
         return query.getResultList();
     }
 
+
     @Transactional
     public List<Product> findByCode(Long code) {
-        Query query = entityManager.createQuery("select p from productEntity p where p.code like:code", Product.class);
+        Query query = entityManager.createQuery("select p from productEntity p where p.code like :code", Product.class);
         query.setParameter("code", code);
         return query.getResultList();
     }
