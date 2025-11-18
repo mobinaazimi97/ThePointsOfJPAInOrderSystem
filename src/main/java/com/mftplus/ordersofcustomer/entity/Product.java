@@ -41,16 +41,11 @@ public class Product extends Base {
     @Column(name = "category", length = 30)
     private String category;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
-    @JoinColumn(name = "p_group")
-    private ProductGroup productGroup;
-
     @Column(name = "expiredDate")
     private LocalDate expiredDate;
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ProductImage> images;
-
 
     @PrePersist
     @PreUpdate

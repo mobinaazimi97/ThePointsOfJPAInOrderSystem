@@ -106,9 +106,4 @@ public class Order extends Base {
         orderDateTime = LocalDateTime.now();
     }
 
-//    @PreUpdate
-//    public void setExpiredCampDate() {
-//        expiredCampDate = LocalDate.now();
-//    }
-
 }

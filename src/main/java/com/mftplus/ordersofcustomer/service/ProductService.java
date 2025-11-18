@@ -83,11 +83,4 @@ public class ProductService implements Service<Product, Long> {
         query.setParameter("code", code);
         return query.getResultList();
     }
-
-    @Transactional
-    public List<Product> findByGroup(String name) {
-        Query query = entityManager.createQuery("select p from productEntity p where p.productGroup.name like:name", Product.class);
-        query.setParameter("name", name);
-        return query.getResultList();
-    }
 }

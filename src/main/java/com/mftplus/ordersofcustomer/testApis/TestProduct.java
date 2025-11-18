@@ -38,18 +38,10 @@ public class TestProduct {
     @Path("/product")
     @Transactional(Transactional.TxType.REQUIRES_NEW)
     public String test() {
-        ProductGroup child = new ProductGroup();
-        ProductGroup parent = new ProductGroup();
-        child.setName("digital");
-        parent.setName("electronic");
-        child.setParent(parent);
-        ProductPropertyValue productPropertyValue = ProductPropertyValue.builder().name("64G").build();
-        GroupProperty groupProperty = GroupProperty.builder().name("ram").productPropertyValue(productPropertyValue).build();
-        ProductGroup productGroup = ProductGroup.builder().groupProperty(groupProperty).name("laptop").childList(List.of(child)).build();
+
         Product product = Product.builder()
                 .name("laptop")
                 .price(20F)
-                .productGroup(productGroup)
                 .code("111")
                 .category("digital")
                 .build();
@@ -57,17 +49,9 @@ public class TestProduct {
         log.info(product.toString());
 //        return product.toString();
 
-        ProductGroup child2 = new ProductGroup();
-        ProductGroup parent2 = new ProductGroup();
-        child2.setName("phone");
-        parent2.setName("electronic");
-        ProductPropertyValue productPropertyValue2 = ProductPropertyValue.builder().name("64G").build();
-        GroupProperty groupProperty2 = GroupProperty.builder().name("ram").productPropertyValue(productPropertyValue2).build();
-        ProductGroup productGroup2 = ProductGroup.builder().groupProperty(groupProperty2).name("laptop").parent(parent2).childList(List.of(child2)).build();
         Product product2 = Product.builder()
                 .name("mobile")
                 .price(20F)
-                .productGroup(productGroup2)
                 .code("1111")
                 .category("")
                 .build();
@@ -118,7 +102,7 @@ public class TestProduct {
                 .category("digital")
                 .build();
         log.info("category {}", product);
-        return productService.findByCategory(product);
+        return productService.findByCategory(product.toString());
     }
 
 
@@ -127,24 +111,11 @@ public class TestProduct {
     @Transactional(Transactional.TxType.REQUIRES_NEW)
     public Double testRep() {
 
-        ProductGroup child = ProductGroup.builder().name("digital").build();
-        ProductGroup parent = ProductGroup.builder().name("electronic").build();
-        child.setParent(parent);
-
-        ProductPropertyValue propertyValue = ProductPropertyValue.builder().name("64G").build();
-        GroupProperty groupProperty = GroupProperty.builder().name("ram").productPropertyValue(propertyValue).build();
-
-        ProductGroup productGroup = ProductGroup.builder()
-                .name("laptop")
-                .groupProperty(groupProperty)
-                .childList(List.of(child))
-                .build();
 
         Product product = Product.builder()
                 .name("laptop")
                 .price(300F)
                 .code("111")
-                .productGroup(productGroup)
                 .build();
 
         productService.save(product);

@@ -10,12 +10,12 @@ import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDate;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 @Getter
 @Setter
 @SuperBuilder
 @NoArgsConstructor
 @ToString
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ProductDTO {
     private Long id;
     private String name;
@@ -23,7 +23,4 @@ public class ProductDTO {
     private String code;
     private String category;
     private LocalDate expiredDate;
-
-//    private ProductGroupDTO productGroup;
-
 }

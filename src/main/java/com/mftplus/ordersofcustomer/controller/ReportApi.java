@@ -48,7 +48,7 @@ public class ReportApi {
     @Path("/{id}/summary")
     public Response getReportSummary(@PathParam("id") Long id) {
 
-        ReportSummary summary = reportService.getReportSummary(id);
+        ReportSummary summary = (ReportSummary) reportService.getReportSummary(id);
         return Response.ok(summary).build();
     }
 
